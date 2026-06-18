@@ -1358,7 +1358,7 @@
       border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
-      transition: box-shadow .35s ease, opacity .35s ease, filter .35s ease;
+      transition: transform .1s ease-out, box-shadow .1s ease-out, opacity .35s ease, filter .35s ease;
       position: relative;
       cursor: default;
       will-change: transform;
@@ -1367,7 +1367,9 @@
     }
 
     .svc-card:hover {
-      box-shadow: 0 24px 64px rgba(90, 75, 55, .18)
+      transform: translateY(-15px) scale(1.15);
+      box-shadow: 0 45px 120px rgba(90, 75, 55, .35);
+      z-index: 10;
     }
 
 
@@ -2581,21 +2583,21 @@
     }
 
     .wa-fab {
-      width: 56px;
-      height: 56px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: var(--green);
+      background: #25D366;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(139, 117, 86, .45);
-      transition: all var(--t);
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
       text-decoration: none
     }
 
     .wa-fab:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 32px rgba(139, 117, 86, .55)
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55)
     }
 
     .wa-fab-label {
@@ -4620,14 +4622,12 @@
   </footer>
 
   <!-- FLOATING WA -->
-  <a href="https://wa.me/919588427319" target="_blank" id="wa-float">
+  <a href="https://wa.me/919588427319" target="_blank" id="wa-float" aria-label="Chat on WhatsApp">
     <div class="wa-fab">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-        <path
-          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-        <path
-          d="M11.998 2C6.477 2 2 6.477 2 12c0 1.99.518 3.86 1.428 5.475L2.046 22l4.617-1.357A9.948 9.948 0 0 0 12 22c5.523 0 10-4.477 10-10S17.52 2 12 2h-.002z"
-          fill-rule="evenodd" clip-rule="evenodd" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 175.216 175.552" fill="#ffffff">
+        <path d="M89.319 2.544C41.548 2.544 2.782 41.31 2.782 89.081c0 15.249 3.952 29.587 10.892 42.074L.828 172.895l42.636-12.58c11.891 6.342 25.449 9.94 39.855 9.94 47.771 0 86.537-38.766 86.537-86.537S137.09 2.544 89.319 2.544z" />
+        <path fill="#25D366" d="M89.319 16.048c-40.296 0-73.033 32.737-73.033 73.033 0 13.71 3.796 26.524 10.392 37.467l-6.848 25.085 25.759-6.741c10.556 6.06 22.785 9.522 35.73 9.522 40.296 0 73.033-32.737 73.033-73.033s-32.737-73.033-73.033-73.033z" />
+        <path d="M62.567 50.587c-1.608-3.573-3.302-3.643-4.833-3.706l-4.128-.054c-1.422 0-3.737.534-5.694 2.669-1.957 2.136-7.474 7.296-7.474 17.804 0 10.507 7.652 20.66 8.717 22.082 1.066 1.422 14.783 23.718 36.489 32.265 18.059 7.102 21.729 5.689 25.644 5.333 3.916-.356 12.632-5.155 14.411-10.131 1.779-4.977 1.779-9.239 1.244-10.131-.534-.891-1.957-1.422-4.093-2.491-2.136-1.066-12.632-6.226-14.589-6.938-1.957-.713-3.38-1.066-4.802.713-1.422 1.779-5.512 6.938-6.756 8.36-1.244 1.422-2.491 1.601-4.627.534-2.136-1.066-9.012-3.322-17.159-10.596-6.345-5.658-10.628-12.643-11.872-14.779-1.244-2.136-.133-3.291 .935-4.354 .96-.96 2.136-2.491 3.202-3.737 1.066-1.244 1.422-2.136 2.136-3.558.713-1.422.356-2.669-.178-3.737-.534-1.066-4.716-11.6-6.571-15.868z" />
       </svg>
     </div>
     <span class="wa-fab-label">WhatsApp</span>
@@ -5632,27 +5632,10 @@ The clinic was clean and well-maintained, and the support staff was courteous an
       document.head.appendChild(style);
     })();
 
-    // J. Magnetic Repel — cards push away from cursor
-    if (window.innerWidth >= 1025) {
-      document.querySelectorAll('.svc-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dx = (e.clientX - cx) / rect.width;
-          const dy = (e.clientY - cy) / rect.height;
-          gsap.to(card, {
-            x: dx * 8, y: dy * 8,
-            rotateX: dy * -4, rotateY: dx * 4,
-            transformPerspective: 600,
-            duration: 0.3, ease: 'power2.out'
-          });
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, { x: 0, y: 0, rotateX: 0, rotateY: 0, duration: 0.4, ease: 'power3.out' });
-        });
-      });
-    }
+// Magnetic hover effect removed to prevent stale transform states.
+// Previously this block added interactive repulsion on hover, which conflicted with CSS hover.
+// The CSS :hover provides the desired pop‑up effect.
+
 
     // K. Elastic bounce counter numbers
     document.querySelectorAll('.counter-item').forEach(item => {
