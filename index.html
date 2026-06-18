@@ -4688,13 +4688,11 @@
       const tooth = document.getElementById('intro-tooth');
       const name = document.getElementById('intro-name');
 
-      if (window.innerWidth <= 1024) {
-        if (ov) ov.style.display = 'none';
-        gsap.set('.hero-left', { opacity: 1, x: 0, filter: 'blur(0px)' });
-        gsap.set('.hero-right', { opacity: 1, scale: 1, filter: 'blur(0px)' });
-        gsap.set('#intro-name > div', { filter: 'blur(0px)' });
-        return;
-      }
+      const isMobile = window.innerWidth <= 1024;
+      const b10 = isMobile ? {} : { filter: 'blur(10px)' };
+      const b20 = isMobile ? {} : { filter: 'blur(20px)' };
+      const b0 = isMobile ? {} : { filter: 'blur(0px)' };
+      const bExit = isMobile ? { filter: 'brightness(2)' } : { filter: 'brightness(2) blur(20px)' };
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -4718,11 +4716,11 @@
         .fromTo('#intro-name > div', {
           opacity: 0,
           y: 20,
-          filter: 'blur(10px)'
+          ...b10
         }, {
           opacity: 1,
           y: 0,
-          filter: 'blur(0px)',
+          ...b0,
           duration: 0.8,
           stagger: 0.2
         }, '-=0.8')
@@ -4738,20 +4736,20 @@
           scale: 60,
           opacity: 0,
           z: 2000,
-          filter: 'brightness(2) blur(20px)',
+          ...bExit,
           duration: 1.2,
           ease: 'power4.in'
         }, '+=0.5')
         // 5. Fade out everything else
-        .to(name, { opacity: 0, scale: 1.2, filter: 'blur(20px)', duration: 0.5 }, '-=0.8')
+        .to(name, { opacity: 0, scale: 1.2, ...b20, duration: 0.5 }, '-=0.8')
         .to(ov, {
           opacity: 0,
           duration: 0.8,
           onComplete: () => ov.style.display = 'none'
         }, '-=0.4')
         // 6. Hero Entrance
-        .fromTo('.hero-left', { opacity: 0, x: -50, filter: 'blur(10px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 1 }, '-=0.4')
-        .fromTo('.hero-right', { opacity: 0, scale: 0.9, filter: 'blur(10px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1 }, '-=0.8');
+        .fromTo('.hero-left', { opacity: 0, x: -50, ...b10 }, { opacity: 1, x: 0, ...b0, duration: 1 }, '-=0.4')
+        .fromTo('.hero-right', { opacity: 0, scale: 0.9, ...b10 }, { opacity: 1, scale: 1, ...b0, duration: 1 }, '-=0.8');
     });
 
     // ─── SCROLL PROGRESS ───────────────────────────────────────────
